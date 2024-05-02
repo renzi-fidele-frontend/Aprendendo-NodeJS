@@ -1,7 +1,13 @@
 const express = require("express");
+const fs = require("fs");
 
 const app = express();
 
+app.listen(3000);
+
+const arquivoDados = fs.readFileSync("pages/dados.html");
+
+// Ao se navegar para home
 app.get("/", (req, res) => {
    console.log("GET feito");
    res.send(
@@ -9,9 +15,14 @@ app.get("/", (req, res) => {
    );
 });
 
+// Ao se fazer post na home
 app.post("/", (req, res) => {
    console.log("Formulário enviado com sucesso");
    res.send("<h1>Bem vindo</h1>");
 });
 
-app.listen(3000);
+// Ao se navegar para dados
+app.get("/dados", (req, res) => {
+   res.setHeader("Content-Type", "text/html");
+   res.send(arquivoDados);
+});
