@@ -3,9 +3,12 @@ const fs = require("fs");
 
 const app = express();
 
-app.listen(3000);
+const port = 3000;
 
-const arquivoDados = fs.readFileSync("pages/dados.html");
+app.listen(port);
+
+// Importando página de html que será retornada
+const paginaDados = fs.readFileSync("pages/dados.html");
 
 // Ao se navegar para home
 app.get("/", (req, res) => {
@@ -17,12 +20,24 @@ app.get("/", (req, res) => {
 
 // Ao se fazer post na home
 app.post("/", (req, res) => {
+   let dados_resposta = "";
+
+   req.on("end", () => {
+      let nomeUsuario = dados_resposta.split("&")[0].split("=")[1].split("+").join(" ");
+      console.log(dados_resposta);
+      res.send(`<h1>Bem vindo ${nomeUsuario}</h1>`);
+   });
+
+   req.on("data", (chunk) => {
+      dados_resposta += chunk;
+   });
    console.log("Formulário enviado com sucesso");
-   res.send("<h1>Bem vindo</h1>");
 });
 
 // Ao se navegar para dados
 app.get("/dados", (req, res) => {
-   res.setHeader("Content-Type", "text/html");
-   res.send(arquivoDados);
+   res.type("html");
+   res.send(paginaDados);
 });
+
+// Utilizamos o método next() quando nenhuma responsta é enviada
