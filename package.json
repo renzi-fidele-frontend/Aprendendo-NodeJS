@@ -1,22 +1,27 @@
 {
-  "name": "primeiros-passos",
-  "version": "1.0.0",
-  "description": "",
- "main": "utilizandoExpress.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/renzi-fidele-frontend/Aprendendo-NodeJS.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/renzi-fidele-frontend/Aprendendo-NodeJS/issues"
-  },
-  "homepage": "https://github.com/renzi-fidele-frontend/Aprendendo-NodeJS#readme",
-  "dependencies": {
-    "express": "^4.19.2"
-  }
+   "name": "primeiros-passos",
+   "version": "1.0.0",
+   "description": "",
+   "main": "UtilizandoBodyParser.js",
+   "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "start": "nodemon UtilizandoBodyParser.js"
+   },
+   "repository": {
+      "type": "git",
+      "url": "git+https://github.com/renzi-fidele-frontend/Aprendendo-NodeJS.git"
+   },
+   "author": "",
+   "license": "ISC",
+   "bugs": {
+      "url": "https://github.com/renzi-fidele-frontend/Aprendendo-NodeJS/issues"
+   },
+   "homepage": "https://github.com/renzi-fidele-frontend/Aprendendo-NodeJS#readme",
+   "dependencies": {
+      "body-parser": "^1.20.2",
+      "express": "^4.19.2"
+   },
+   "devDependencies": {
+      "nodemon": "^3.1.0"
+   }
 }
