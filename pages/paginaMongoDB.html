@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Aprendendo Mongo DB</title>
+   </head>
+   <body style="background-color: rgb(139, 216, 139);">
+      <h1 style="text-align: center">Aprendendo Mongo DB</h1>
+
+      <form
+         style="
+            display: flex;
+            padding: 5px;
+            border-radius: 6px;
+            gap: 1em;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            border: 1px solid black;
+            width: 500px;
+            margin-inline: auto;
+            margin-top: 6em;
+         "
+         action="/alunos"
+         method="POST"
+      >
+         <formfield><label for="nome">Nome do aluno </label><input required type="text" name="nome" /></formfield
+         ><formfield><label for="idade">Idade do aluno </label><input required type="number" name="idade" /></formfield>
+         <button type="submit">Enviar formulario</button>
+      </form>
+   </body>
+</html>
