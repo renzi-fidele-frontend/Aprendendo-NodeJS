@@ -4,7 +4,7 @@ const { MongoClient } = require("mongodb");
 
 const app = express();
 
-const CONNECTION_STRING = "mongodb+srv://admin:Ratinho00@cluster0.ecocgfb.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+const CONNECTION_STRING = "mongodb+srv://admin:Ratinho00@cluster0.dcvywkf.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 
 // 1o Iniciamos a instância do cliente
 const client = new MongoClient(CONNECTION_STRING);
@@ -38,22 +38,17 @@ app.post("/alunos", async (req, res) => {
    let aluno = { nome, idade };
 
    // 2o Iniciamos a conexão
-   await client
-      .connect()
-      .then(() => {
-         const db = client.db();
-         db.collection("alunos").insertOne(aluno);
-         console.log("Adicionado com sucesso");
-         res.json({ mensagem: "Aluno adicionado com sucesso!" });
-      })
-
-      .catch((erro) => {
-         res.status(401).json({ mensagem: "Não consegui adicionar ao Mongo DB" });
-         console.log(erro.message);
-      })
-      .finally(() => {
-         client.close();
-      });
+   try {
+      await client.connect();
+      const db = client.db();
+      const result = await db.collection("alunos").insertOne(aluno);
+      console.log("Adicionado com sucesso");
+      res.json({ mensagem: "Aluno adicionado com sucesso!" });
+   } catch (error) {
+      console.log(error.message);
+      return res.status(401).json({ mensagem: "Não consegui adicionar ao Mongo DB" });
+   }
+   client.close();
 
    //res.json({ alunos });
 });
