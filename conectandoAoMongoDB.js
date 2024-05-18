@@ -22,15 +22,18 @@ app.get("/", (req, res) => {
 app.get("/alunos", async (req, res) => {
    //res.json({ alunos });
    // TODO: Retornar a lista dos anos na coleccao do MongoDB
-   const client = new MongoClient(CONNECTION_STRING);
-   await client
-      .connect()
-      .then(async () => {
-         const db = client.db();
-         let alunos = db.collection("alunos").find();
-         console.log(alunos);
-      })
-      .catch((err) => console.log(err));
+   try {
+      await client.connect();
+      const db = client.db();
+      const alunos = await db.collection("alunos").find().toArray();
+      console.log("Alunos apanhados");
+      console.log(alunos);
+      res.json({ alunos });
+   } catch (error) {
+      console.log(err);
+      return res.status(401).json({ mensagem: "Erro ao fazer o get no DB" });
+   }
+   client.close();
 });
 
 app.post("/alunos", async (req, res) => {
