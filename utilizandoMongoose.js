@@ -2,6 +2,7 @@ const express = require("express");
 const { readFileSync } = require("fs");
 const { MongoClient } = require("mongodb");
 
+
 const app = express();
 
 const CONNECTION_STRING = "mongodb+srv://admin:Ratinho00@cluster0.dcvywkf.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
@@ -18,7 +19,6 @@ app.get("/", (req, res) => {
    res.type("html");
    res.send(paginaMongoDB);
 });
-
 
 app.get("/alunos", async (req, res) => {
    //res.json({ alunos });

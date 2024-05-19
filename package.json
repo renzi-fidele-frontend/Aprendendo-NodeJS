@@ -2,10 +2,10 @@
    "name": "primeiros-passos",
    "version": "1.0.0",
    "description": "",
-   "main": "conectandoAoMongoDB.js",
+   "main": "utilizandoMongoose.js",
    "scripts": {
       "test": "echo \"Error: no test specified\" && exit 1",
-      "start": "nodemon conectandoAoMongoDB.js"
+      "start": "nodemon utilizandoMongoose.js"
    },
    "repository": {
       "type": "git",
@@ -20,7 +20,8 @@
    "dependencies": {
       "body-parser": "^1.20.2",
       "express": "^4.19.2",
-      "mongodb": "6.6"
+      "mongodb": "6.6",
+      "mongoose": "^8.4.0"
    },
    "devDependencies": {
       "nodemon": "^3.1.0"
