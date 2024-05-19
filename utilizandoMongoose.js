@@ -1,9 +1,8 @@
 const express = require("express");
 const { readFileSync } = require("fs");
-const { adicionarAluno } = require("./controllers/AlunoController");
+const { adicionarAluno, getAlunos } = require("./controllers/AlunoController");
 
 const app = express();
-
 
 // Importando página de html que será retornada
 const paginaMongoDB = readFileSync("pages/paginaMongoDB.html");
@@ -15,7 +14,7 @@ app.get("/", (req, res) => {
    res.send(paginaMongoDB);
 });
 
-app.get("/alunos", async (req, res) => {});
+app.get("/alunos", getAlunos);
 
 app.post("/alunos", adicionarAluno);
 

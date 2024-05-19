@@ -15,4 +15,16 @@ const adicionarAluno = async (req, res) => {
       .catch((err) => console.log("Erro ao conectar", err.message));
 };
 
+const getAlunos = async (req, res) => {
+   let alunos;
+   try {
+      alunos = await Aluno.find();
+   } catch (erro) {
+      console.log("Erro ao apanhar os alunos no DB");
+      return res.status(404).json({ mensagen: "Erro ao apanhar os alunos no DB" });
+   }
+   res.json({ alunos: alunos });
+};
+
 exports.adicionarAluno = adicionarAluno;
+exports.getAlunos = getAlunos;
